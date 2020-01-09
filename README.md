@@ -4,7 +4,7 @@
 
 Frontend (Angular) + Backend (Django)
 
-![DatabaseDiag.](swengsangularhw/dbdiag.png)
+![DatabaseDiag.](dbdiag.png)
 
 ## Installation & Requirements
 
