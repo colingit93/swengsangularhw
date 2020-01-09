@@ -1,0 +1,48 @@
+<p>Welcome to Artist Creation Formular</p>
+
+<form [formGroup]="artistFormGroup" class="artist">
+  <mat-form-field>
+    <input matInput type="text" placeholder="First Name" formControlName="first_name" required>
+    <mat-hint align="end">The First Name of the artist</mat-hint>
+    <mat-error *ngIf="artistFormGroup.controls.first_name.hasError('required')">Artist FirstName is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Last Name" formControlName="last_name" required>
+    <mat-hint align="end">The Last Name of the artist</mat-hint>
+    <mat-error *ngIf="artistFormGroup.controls.last_name.hasError('required')">Artist LastName is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Year of Birth" formControlName="year_of_birth" required>
+    <mat-hint align="end">The Year of Birth of the artist</mat-hint>
+    <mat-error *ngIf="artistFormGroup.controls.year_of_birth.hasError('required')">Artist YearOfBirth is required</mat-error>
+  </mat-form-field>
+
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!artistFormGroup.valid" (click)="createArtist()">
+      <span *ngIf="!artistFormGroup.controls.id.value">Create</span>
+      <span *ngIf="artistFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>
+
+<!--<form [formGroup] = "artistFormGroup">
+  <label>
+    First Name:
+    <input type="text" formControlName="first_name"/>
+  </label>
+  <br/>
+  <label>
+    Last Name:
+    <input type="text" formControlName="last_name"/>
+  </label>
+  <br/>
+  <label>
+    Year of birth:
+    <input type="text" formControlName="year_of_birth"/>
+  </label>
+  <br/>
+  <button type="button" (click)="createArtist()">Create</button>
+</form>-->
+
