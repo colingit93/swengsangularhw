@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ArtistService} from '../service/artist.service';
 
 @Component({
   selector: 'app-artist-form',
@@ -11,7 +12,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class ArtistFormComponent implements OnInit {
   artistFormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private router: Router, private artistService: ArtistService) { }
 
   ngOnInit() {
     this.artistFormGroup = this.fb.group({
@@ -33,12 +34,12 @@ export class ArtistFormComponent implements OnInit {
   createArtist() {
     const artist = this.artistFormGroup.value;
     if (artist.id) {
-      this.http.put('/api/artist/' + artist.id + '/update', artist)
+      this.artistService.updateArtist(artist)
         .subscribe( () => {
           alert('updated successfully');
         });
     } else {
-      this.http.post('/api/artist/create', this.artistFormGroup.value)
+      this.artistService.createArtist(artist)
         .subscribe(() => {
           alert('created successfully');
         });

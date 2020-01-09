@@ -54,7 +54,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Actors</mat-label>
+    <mat-label>Interpret(s)</mat-label>
     <mat-select formControlName="interpret" multiple>
       <mat-option *ngFor="let artist of artistOptions" [value]="artist.id">{{artist.last_name}}</mat-option>
     </mat-select>

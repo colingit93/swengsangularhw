@@ -54,7 +54,7 @@
     <td mat-cell *matCellDef="let song">{{song.lyric_content}}</td>
   </ng-container>
 
-  <ng-container matColumnDef="id">
+  <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let song">
       <button mat-button [routerLink]="'/song-form/' + song.id">Edit</button>

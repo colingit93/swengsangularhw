@@ -12,20 +12,16 @@ export class ArtistListComponent implements OnInit {
   artists: any[];
 
   constructor(private http: HttpClient, private artistService: ArtistService) { }
-  displayedColumns = ['first_name', 'last_name', 'year_of_birth'];
+  displayedColumns = ['first_name', 'last_name', 'year_of_birth', 'action'];
 
   ngOnInit() {
-    this.http.get('api/artist/list')
-      .subscribe((response: any[]) => {
-        this.artists = response;
-      });
     this.artistService.getArtists()
       .subscribe((response: any[]) => {
         this.artists = response;
       });
   }
   deleteArtist(artist: any) {
-    this.http.delete('/api/artist/' + artist.id + '/delete')
+    this.artistService.deleteArtist(artist)
       .subscribe(() => {
         this.ngOnInit();
       });

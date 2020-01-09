@@ -2,6 +2,9 @@ from django.conf.urls import url
 from django.urls import path
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
+from rest_framework_jwt.views import obtain_jwt_token
+from rest_framework_jwt.views import refresh_jwt_token
+from rest_framework_jwt.views import verify_jwt_token
 
 from django.contrib import admin
 from . import views
@@ -27,6 +30,10 @@ urlpatterns = [
     path('artist/<int:pk>/get', views.artist_form_get),
     path('artist/<int:pk>/update', views.artist_form_update),
     path('artist/<int:pk>/delete', views.artist_delete),
+
+    url(r'^api-token-auth/', obtain_jwt_token),
+    url(r'^api-token-refresh/', refresh_jwt_token),
+    url(r'^api-token-verify/', verify_jwt_token),
 
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

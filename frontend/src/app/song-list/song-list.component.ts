@@ -14,20 +14,16 @@ export class SongListComponent implements OnInit {
 
   constructor(private http: HttpClient, private songService: SongService, public genreService: GenreService) {
   }
-  displayedColumns = ['title', 'genre', 'album', 'track_number', 'release_date', 'duration', 'interpret', 'lyric', 'id'];
+  displayedColumns = ['title', 'genre', 'album', 'track_number', 'release_date', 'duration', 'interpret', 'lyric', 'action'];
 
   ngOnInit() {
-    this.http.get('/api/song/list')
-      .subscribe((response: any[]) => {
-        this.songs = response;
-      });
     this.songService.getSongs()
       .subscribe((response: any[]) => {
         this.songs = response;
       });
   }
   deleteSong(song: any) {
-    this.http.delete('/api/song/' + song.id + '/delete')
+    this.songService.deleteSong(song)
       .subscribe(() => {
         this.ngOnInit();
       });

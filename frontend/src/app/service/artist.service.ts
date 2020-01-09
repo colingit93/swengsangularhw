@@ -15,8 +15,16 @@ export class ArtistService {
   getArtists() {
     return this.http.get('/api/artist/list');
   }
-
   getArtist(id: string) {
-    return this.http.get( 'api/artist/list' + id + '/get');
+    return this.http.get( 'api/artist/' + id + '/get');
+  }
+  deleteArtist(artist) {
+    return this.http.delete('/api/artist/' + artist.id + '/delete');
+  }
+  updateArtist(artist) {
+    return this.http.put('/api/artist/' + artist.id + '/update', artist);
+  }
+  createArtist(artist) {
+    return this.http.post('/api/artist/create', artist);
   }
 }

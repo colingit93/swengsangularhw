@@ -20,6 +20,13 @@ import {
 import { ArtistListComponent } from './artist-list/artist-list.component';
 import { ArtistFormComponent } from './artist-form/artist-form.component';
 import {DateComponent} from './date/date.component';
+import {JwtModule} from '@auth0/angular-jwt';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +35,9 @@ import {DateComponent} from './date/date.component';
     SongFormComponent,
     ArtistListComponent,
     ArtistFormComponent,
-    DateComponent
+    DateComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +55,13 @@ import {DateComponent} from './date/date.component';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

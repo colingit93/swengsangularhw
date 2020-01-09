@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {GenreService} from '../service/genre.service';
 import {LyricService} from '../service/lyric.service';
 import {ArtistService} from '../service/artist.service';
+import {SongService} from '../service/song.service';
 
 @Component({
   selector: 'app-song-form',
@@ -17,7 +18,7 @@ export class SongFormComponent implements OnInit {
   lyricOptions;
   artistOptions;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private router: Router, public genreService: GenreService, private lyricService: LyricService, private artistService: ArtistService) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute, private router: Router, public genreService: GenreService, private lyricService: LyricService, private artistService: ArtistService, private songService: SongService) {
   }
 
   ngOnInit() {
@@ -50,12 +51,12 @@ export class SongFormComponent implements OnInit {
   createSong() {
     const song = this.songFormGroup.value;
     if (song.id) {
-      this.http.put('/api/song/' + song.id + '/update', song)
+      this.songService.updateSong(song)
         .subscribe(() => {
           alert('updated successfully');
         });
     } else {
-      this.http.post('/api/song/create', this.songFormGroup.value)
+      this.songService.createSong(song)
         .subscribe(() => {
           alert('created successfully');
         });

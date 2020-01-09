@@ -12,7 +12,15 @@ export class SongService {
     return this.http.get('/api/song/list');
   }
   getSong(id: string) {
-    return this.http.get( 'api/song/list' + id + '/get');
+    return this.http.get( 'api/song/' + id + '/get');
   }
-  // todoo service for createsong, updatesong, deletesong
+  updateSong(song) {
+    return this.http.put('/api/song/' + song.id + '/update', song);
+  }
+  deleteSong(song) {
+    return this.http.delete('/api/song/' + song.id + '/delete');
+  }
+  createSong(song) {
+    return this.http.post('/api/song/create', song);
+  }
 }
