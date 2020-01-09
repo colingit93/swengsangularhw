@@ -1,0 +1,16 @@
+[
+  {
+    "model": "yamod.lyric",
+    "pk": 1,
+    "fields": {
+      "lyrictext": "LyricText1"
+    }
+  },
+  {
+    "model": "yamod.lyric",
+    "pk": 2,
+    "fields": {
+      "lyrictext": "LyricText2"
+    }
+  }
+]
