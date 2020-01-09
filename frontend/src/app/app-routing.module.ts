@@ -7,6 +7,7 @@ import {ArtistFormComponent} from './artist-form/artist-form.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
 import {AuthGuard} from './auth.guard';
+import {GmapsComponent} from './gmaps/gmaps.component';
 
 
 // http://localhost:4200/song-form
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'artist-list', component: ArtistListComponent, canActivate: [AuthGuard]},
   { path: 'artist-form', component: ArtistFormComponent, canActivate: [AuthGuard]},
   { path: 'artist-form/:id', component: ArtistFormComponent, canActivate: [AuthGuard]},
+  { path: 'gmaps', component: GmapsComponent},
   { path: 'login', component: LoginComponent},
 ];
 

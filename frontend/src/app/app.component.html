@@ -1,19 +1,21 @@
 <mat-toolbar *ngIf="isLoggedIn">
-  <button mat-button [matMenuTriggerFor]="songMenu">Song</button>
+  <button mat-button color="primary" [matMenuTriggerFor]="songMenu">Song</button>
   <mat-menu #songMenu="matMenu">
     <button mat-menu-item routerLink="song-list">List Song(s)</button>
     <button mat-menu-item routerLink="song-form">Create New Song</button>
   </mat-menu>
 
-  <button mat-button [matMenuTriggerFor]="artistMenu">Artist</button>
+  <button mat-button color="primary" [matMenuTriggerFor]="artistMenu">Artist</button>
   <mat-menu #artistMenu="matMenu">
     <button mat-menu-item routerLink="artist-list">List Artist(s)</button>
     <button mat-menu-item routerLink="artist-form">Create New Artist</button>
   </mat-menu>
 
+  <button mat-button color="primary" routerLink="gmaps">GMAPS</button>
   <app-logout></app-logout>
 
 </mat-toolbar>
+
 <pre>isLoggedIn: {{isLoggedIn}}</pre>
 
 <!--<nav>

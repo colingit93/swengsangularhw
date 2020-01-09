@@ -23,6 +23,8 @@ import {DateComponent} from './date/date.component';
 import {JwtModule} from '@auth0/angular-jwt';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { GmapsComponent } from './gmaps/gmaps.component';
+import { AgmCoreModule } from '@agm/core';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -37,7 +39,8 @@ export function tokenGetter() {
     ArtistFormComponent,
     DateComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    GmapsComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +64,10 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:4200']
       }
-    })
+    }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCnNpK8ydIvueXUhoI6-7IS2MWdcVhhafo'
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
