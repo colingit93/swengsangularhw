@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormBuilder, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, ValidatorFn, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GenreService} from '../service/genre.service';
 import {LyricService} from '../service/lyric.service';
@@ -24,12 +24,12 @@ export class SongFormComponent implements OnInit {
   ngOnInit() {
     this.songFormGroup = this.fb.group({
       'id': [null],
-      'title': ['', Validators.required],
+      'title': ['',],
       'genre': [null],
       'album': [''],
       'track_number': [1],
       'release_date': ['1900-01-01'],
-      'duration': [2],
+      'duration': [2, [Validators.required, this.belowZeroValidator()]],
       'lyric': [null],
       'interpret': [[]],
     });
@@ -61,6 +61,12 @@ export class SongFormComponent implements OnInit {
           alert('created successfully');
         });
     }
+  }
+  belowZeroValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const value = /-/.test(control.value);
+      return value ? {'belowzero': {value: control.value}} : null;
+    };
   }
 
 }

@@ -57,3 +57,8 @@ npm install
 Angular Google Maps Library https://www.npmjs.com/package/@agm/core
 
 **Validators**
+
+```
+belowZeroValidator()
+// in song-form.component.ts to prevent a negative value for the song duration
+```

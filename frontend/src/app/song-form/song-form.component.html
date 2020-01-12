@@ -43,6 +43,7 @@
   <mat-form-field>
     <input matInput type="number" placeholder="Song Duration" formControlName="duration">
     <mat-hint align="end">Song Duration</mat-hint>
+    <mat-error *ngIf="songFormGroup.controls.duration.hasError('belowzero')">below Zero!</mat-error>
   </mat-form-field>
 
   <mat-form-field>
