@@ -17,7 +17,7 @@ djangorestframework-jwt==1.11.0
 **Setup**
 python3 manage.py makemigrations yamod
 python3 manage.py migrate
-python3 managy.py loaddata initial_lyrics.json
+python3 manage.py loaddata initial_lyrics.json
 python3 manage.py createsuperuser
 python3 manage.py runserver
 
@@ -48,8 +48,7 @@ Token Expiration Time: 5 Days
 ## Frontend Setup
 
 npm install
-
-
+ng serve
 
 ## Features
 
